@@ -1,0 +1,21 @@
+<div class="input-wrapper relative">
+    <span *ngIf="prefix" class="prefix absolute inset-y-0 left-0 pl-2 flex items-center">
+      <ng-content select="[prefix]"></ng-content>
+    </span>
+    <input
+      [attr.type]="type"
+      [attr.placeholder]="placeholder"
+      [attr.disabled]="disabled ? true : null"
+      [attr.readonly]="readonly ? true : null"
+      [(ngModel)]="value"
+      class="input-field w-full pl-4 pr-4 py-2 rounded-md border transition duration-200"
+      [class]="class"
+    />
+    <span *ngIf="suffix" class="suffix absolute inset-y-0 right-0 pr-2 flex items-center">
+      <ng-content select="[suffix]"></ng-content>
+    </span>
+    <p *ngIf="hint" class="hint text-gray-500 text-sm mt-1">{{ hint }}</p>
+    <p *ngIf="error" class="error text-red-500 text-sm mt-1">{{ error }}</p>
+    <p *ngIf="counter" class="counter text-gray-500 text-sm mt-1">{{ value?.length }}/{{ counter }}</p>
+  </div>
+  
