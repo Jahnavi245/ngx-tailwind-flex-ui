@@ -264,26 +264,344 @@
             "templateData": "<label class=\"flex items-center\">\n    <input\n      type=\"checkbox\"\n      [checked]=\"checked\"\n      [disabled]=\"disabled\"\n      [indeterminate]=\"indeterminate\"\n      (change)=\"onChange($event)\"\n      class=\"form-checkbox\"\n    />\n    <span *ngIf=\"label\" class=\"ml-2\" [class.order-last]=\"labelPosition === 'after'\">\n      {{ label }}\n    </span>\n  </label>\n  "
         },
         {
-            "name": "InputComponent",
-            "id": "component-InputComponent-1669140fe2d66f0edc97701fe0884ee148c569c9f63ccbe86cecd86c4223d49f121aed0a1053573950b47dba654203761457cb9b8cc85aeb7277580598d98647",
-            "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.ts",
+            "name": "PinInputComponent",
+            "id": "component-PinInputComponent-1b88834d97f2bf16e0cca749f4ef397285a0656abf68d07f150a022a7474f0d0e5020e7065bae3ad75428bc5a85234885c502e436cd5ff6647bd62d2eb0d3547",
+            "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
             "outputs": [],
             "providers": [],
-            "selector": "lib-input",
+            "selector": "lib-otp-input",
             "styleUrls": [],
             "styles": [],
             "templateUrl": [
-                "./input.component.html"
+                "./pin-input.component.html"
             ],
             "viewProviders": [],
             "hostDirectives": [],
             "inputsClass": [
                 {
-                    "name": "class",
+                    "name": "autoSubmit",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "customClass",
                     "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "length",
+                    "defaultValue": "6",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "mask",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 25,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "pin",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "preventPaste",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 30,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "type",
+                    "defaultValue": "'number'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "completed",
+                    "defaultValue": "new EventEmitter<string>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 31,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "inputBoxes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "QueryList<ElementRef>",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33,
+                    "decorators": [
+                        {
+                            "name": "ViewChildren",
+                            "stringifiedArguments": "'otpInput'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "otpValues",
+                    "defaultValue": "[]",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string[]",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "emitOTP",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 93,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nEmits the completed OTP",
+                    "description": "<p>Emits the completed OTP</p>\n",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "onInput",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHandles user input in OTP fields",
+                    "description": "<p>Handles user input in OTP fields</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "Event",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onKeyDown",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 69,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHandles Backspace key for moving to the previous field",
+                    "description": "<p>Handles Backspace key for moving to the previous field</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "KeyboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onPaste",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "ClipboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\nHandles pasting OTP values",
+                    "description": "<p>Handles pasting OTP values</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "ClipboardEvent",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "FormsModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  ViewChildren,\n  QueryList,\n  ElementRef,\n  AfterViewInit,\n  \n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'lib-otp-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule], // Ensure FormsModule is imported\n  templateUrl: './pin-input.component.html',\n  styles: [],\n})\nexport class PinInputComponent implements AfterViewInit {\n  @Input() length = 6; // Default 6-digit OTP\n  @Input() type = 'number'; // Accepts only numbers by default\n  @Input() mask = false; // Mask input like passwords\n  @Input() autoSubmit = false; // Auto-submit when complete\n  @Input() disabled = false; // Disable input\n  @Input() customClass = ''; // Custom styling\n  @Input() pin = ''; // Ensure property exists\n  @Input() preventPaste = false;\n  @Output() completed = new EventEmitter<string>(); // Emits OTP when complete\n\n  @ViewChildren('otpInput') inputBoxes!: QueryList<ElementRef>;\n  otpValues: string[]  = [];\n\n  constructor() {\n    this.otpValues = new Array(this.length).fill('');\n  }\n\n  ngAfterViewInit() {\n    setTimeout(() => this.inputBoxes.get(0)?.nativeElement.focus(), 100);\n  }\n\n  /** Handles user input in OTP fields */\n  onInput(event: Event, index: number) {\n    const input = event.target as HTMLInputElement;\n    const value = input.value;\n\n    // Allow only numbers if type is 'number'\n    if (this.type === 'number' && !/^\\d$/.test(value)) {\n      input.value = '';\n      return;\n    }\n\n    this.otpValues[index] = value;\n\n    // Move to the next input box if a digit is entered\n    if (value && index < this.length - 1) {\n      this.inputBoxes.get(index + 1)?.nativeElement.focus();\n    }\n\n    // Emit OTP if all fields are filled\n    if (this.otpValues.every((v) => v !== '')) {\n      this.emitOTP();\n    }\n  }\n\n  /** Handles Backspace key for moving to the previous field */\n  onKeyDown(event: KeyboardEvent, index: number) {\n    if (event.key === 'Backspace' && !this.otpValues[index] && index > 0) {\n      this.inputBoxes.get(index - 1)?.nativeElement.focus();\n    }\n  }\n\n  /** Handles pasting OTP values */\n  onPaste(event: ClipboardEvent) {\n    if (this.preventPaste) {\n      event.preventDefault();\n      return;\n    }\n\n    event.preventDefault();\n    const pasteData = event.clipboardData?.getData('text') ?? '';\n\n    // Validate if the pasted data length matches the OTP length\n    if (pasteData.length === this.length && /^[a-zA-Z0-9]+$/.test(pasteData)) {\n      this.otpValues = pasteData.split('');\n      this.emitOTP();\n    }\n  }\n\n  /** Emits the completed OTP */\n  public emitOTP() {\n    const otp = this.otpValues.join('');\n    if (this.autoSubmit) {\n      this.completed.emit(otp);\n    }\n  }\n  \n}",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 34
+            },
+            "extends": [],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "templateData": "<div class=\"otp-container\">\n  <input\n    *ngFor=\"let digit of otpValues; let i = index\"\n    #otpInput\n    type=\"{{ mask ? 'password' : 'text' }}\"\n    [(ngModel)]=\"otpValues[i]\"\n    (input)=\"onInput($event, i)\"\n    (keydown)=\"onKeyDown($event, i)\"\n    (paste)=\"onPaste($event)\"\n    maxlength=\"1\"\n    [disabled]=\"disabled\"\n    class=\"otp-box\"\n    [attr.aria-label]=\"'OTP Digit ' + (i + 1)\"\n  />\n</div>\n"
+        },
+        {
+            "name": "RatingComponent",
+            "id": "component-RatingComponent-e65c1de24290b2b3b28dd6b912c35af22ac7b86f0ef6522ba18806be2b1ebafe35f10e58c472907e1b9d22ebf438d4fa0af0e46c260d52f2ea5d16f200eada1f",
+            "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "lib-rating",
+            "styleUrls": [
+                "./rating.component.css"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./rating.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "activeColor",
+                    "defaultValue": "'text-yellow-400'",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "line": 18,
@@ -291,15 +609,42 @@
                     "decorators": []
                 },
                 {
-                    "name": "counter",
+                    "name": "allowHalf",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 21,
+                    "line": 15,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "icon",
+                    "defaultValue": "'⭐'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "inactiveColor",
+                    "defaultValue": "'text-gray-300'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "max",
+                    "defaultValue": "5",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
                     "type": "number",
                     "decorators": []
                 },
                 {
-                    "name": "disabled",
+                    "name": "readonly",
                     "defaultValue": "false",
                     "deprecated": false,
                     "deprecationMessage": "",
@@ -308,91 +653,116 @@
                     "decorators": []
                 },
                 {
-                    "name": "error",
-                    "defaultValue": "''",
+                    "name": "size",
+                    "defaultValue": "'text-2xl'",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 20,
+                    "line": 17,
                     "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "hint",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 19,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "placeholder",
-                    "defaultValue": "''",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 13,
-                    "type": "string",
-                    "decorators": []
-                },
-                {
-                    "name": "prefix",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 22,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "readonly",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 15,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "suffix",
-                    "defaultValue": "false",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 23,
-                    "type": "boolean",
-                    "decorators": []
-                },
-                {
-                    "name": "type",
-                    "defaultValue": "'text'",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "line": 16,
-                    "type": "\"text\" | \"number\" | \"password\" | \"email\"",
                     "decorators": []
                 },
                 {
                     "name": "value",
-                    "defaultValue": "''",
+                    "defaultValue": "0",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "line": 17,
-                    "type": "string | number",
+                    "line": 13,
+                    "type": "number",
                     "decorators": []
                 }
             ],
-            "outputsClass": [],
+            "outputsClass": [
+                {
+                    "name": "valueChange",
+                    "defaultValue": "new EventEmitter<number>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
             "propertiesClass": [],
-            "methodsClass": [],
+            "methodsClass": [
+                {
+                    "name": "getStarClasses",
+                    "args": [
+                        {
+                            "name": "starIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 29,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "starIndex",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setRating",
+                    "args": [
+                        {
+                            "name": "rating",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "isHalf",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "false"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 22,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "rating",
+                            "type": "number",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "isHalf",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "false",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
             "deprecated": false,
             "deprecationMessage": "",
             "hostBindings": [],
             "hostListeners": [],
             "standalone": true,
             "imports": [
-                {
-                    "name": "FormsModule",
-                    "type": "module"
-                },
                 {
                     "name": "CommonModule",
                     "type": "module"
@@ -401,12 +771,17 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-input',\n  imports: [FormsModule,CommonModule],\n  standalone: true,\n  templateUrl: './input.component.html',\n  styles: [], // No inline styles; Tailwind handles it\n})\nexport class InputComponent {\n  @Input() placeholder = '';\n  @Input() disabled = false;\n  @Input() readonly = false;\n  @Input() type: 'text' | 'number' | 'password' | 'email' = 'text';\n  @Input() value: string | number = ''; // Specify a different type instead of `any`\n  @Input() class = ''; // Allow users to pass custom Tailwind classes\n  @Input() hint = '';\n  @Input() error = '';\n  @Input() counter?: number; // Optional character counter\n  @Input() prefix = false;\n  @Input() suffix = false;\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-rating',\n  standalone: true,\n  templateUrl: './rating.component.html',\n  styleUrls: ['./rating.component.css'],\n  imports: [CommonModule],\n})\nexport class RatingComponent {\n  @Input() max = 5;\n  @Input() value = 0;\n  @Input() readonly = false;\n  @Input() allowHalf!: boolean;  // ✅ Fixed: No default value, avoids ESLint issue\n  @Input() icon = '⭐';\n  @Input() size = 'text-2xl';\n  @Input() activeColor = 'text-yellow-400';\n  @Input() inactiveColor = 'text-gray-300';\n  @Output() valueChange = new EventEmitter<number>();\n\n  setRating(rating: number, isHalf = false) {\n    if (!this.readonly) {\n      this.value = isHalf && this.allowHalf ? rating + 0.5 : rating;\n      this.valueChange.emit(this.value);\n    }\n  }\n\n  getStarClasses(starIndex: number) {\n    if (this.value >= starIndex) {\n      return `${this.activeColor} ${this.size}`;\n    } else if (this.allowHalf && this.value >= starIndex - 0.5) {\n      return `${this.activeColor} ${this.size} half-star`;\n    } else {\n      return `${this.inactiveColor} ${this.size}`;\n    }\n  }\n}\n",
             "assetsDirs": [],
-            "styleUrlsData": "",
+            "styleUrlsData": [
+                {
+                    "data": ".half-star {\r\n    position: relative;\r\n    display: inline-block;\r\n  }\r\n  .half-star::after {\r\n    content: \"⯨\"; /* Half-star effect */\r\n    position: absolute;\r\n    left: 0;\r\n    width: 50%;\r\n    overflow: hidden;\r\n  }\r\n  ",
+                    "styleUrl": "./rating.component.css"
+                }
+            ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"input-wrapper relative\">\n    <span *ngIf=\"prefix\" class=\"prefix absolute inset-y-0 left-0 pl-2 flex items-center\">\n      <ng-content select=\"[prefix]\"></ng-content>\n    </span>\n    <input\n      [attr.type]=\"type\"\n      [attr.placeholder]=\"placeholder\"\n      [attr.disabled]=\"disabled ? true : null\"\n      [attr.readonly]=\"readonly ? true : null\"\n      [(ngModel)]=\"value\"\n      class=\"input-field w-full pl-4 pr-4 py-2 rounded-md border transition duration-200\"\n      [class]=\"class\"\n    />\n    <span *ngIf=\"suffix\" class=\"suffix absolute inset-y-0 right-0 pr-2 flex items-center\">\n      <ng-content select=\"[suffix]\"></ng-content>\n    </span>\n    <p *ngIf=\"hint\" class=\"hint text-gray-500 text-sm mt-1\">{{ hint }}</p>\n    <p *ngIf=\"error\" class=\"error text-red-500 text-sm mt-1\">{{ error }}</p>\n    <p *ngIf=\"counter\" class=\"counter text-gray-500 text-sm mt-1\">{{ value?.length }}/{{ counter }}</p>\n  </div>\n  "
+            "templateData": "<div class=\"flex space-x-1\" role=\"radiogroup\">\n    <ng-container *ngFor=\"let star of [].constructor(max); let i = index\">\n      <span\n        [class]=\"getStarClasses(i + 1)\"\n        (click)=\"setRating(i + 1)\"\n        (keydown.enter)=\"setRating(i + 1)\"\n        tabindex=\"0\"\n        role=\"radio\"\n        [attr.aria-label]=\"'Rate ' + (i + 1) + ' out of ' + max\"\n        [attr.aria-checked]=\"i + 1 === value\"\n      >\n        {{ icon }}\n      </span>\n    </ng-container>\n  </div>\n  "
         }
     ],
     "modules": [],
@@ -463,16 +838,6 @@
                 "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n    class: 'text-lg',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
             },
             {
-                "name": "CustomStyled",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    class: 'text-lg px-4 py-2 border-gray-300 focus:ring-2 focus:ring-blue-500',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-            },
-            {
                 "name": "Default",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
@@ -483,14 +848,24 @@
                 "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
             },
             {
-                "name": "Default",
+                "name": "DefaultPinInput",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    length: 6,\r\n    type: 'number',\r\n    autoSubmit: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-otp-input [length]=\"6\" [type]=\"'number'\" (completed)=\"verifyOtp($event)\"></lib-otp-input>`,\r\n  }),\r\n}"
+            },
+            {
+                "name": "DefaultRating",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    value: 3.5,\r\n    max: 5,\r\n    allowHalf: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-rating [value]=\"value\" [max]=\"max\" [allowHalf]=\"allowHalf\"></lib-rating>`,\r\n  }),\r\n}"
             },
             {
                 "name": "Disabled",
@@ -511,16 +886,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-            },
-            {
-                "name": "Disabled",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
             },
             {
                 "name": "Indeterminate",
@@ -556,11 +921,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<InputComponent>",
-                "defaultValue": "{\r\n  title: 'Components/Input',\r\n  component: InputComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    type: {\r\n      control: 'select',\r\n      options: ['text', 'number', 'password', 'email'],\r\n      description: 'Input type',\r\n    },\r\n    placeholder: {\r\n      control: 'text',\r\n      description: 'Placeholder text',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disables the input',\r\n    },\r\n    readonly: {\r\n      control: 'boolean',\r\n      description: 'Sets the input to readonly',\r\n    },\r\n    class: {\r\n      control: 'text',\r\n      description: 'Additional Tailwind CSS classes for customization',\r\n    },\r\n    hint: {\r\n      control: 'text',\r\n      description: 'Hint text',\r\n    },\r\n    error: {\r\n      control: 'text',\r\n      description: 'Error message',\r\n    },\r\n    counter: {\r\n      control: 'number',\r\n      description: 'Character counter limit',\r\n    },\r\n    prefix: {\r\n      control: 'boolean',\r\n      description: 'Show prefix',\r\n    },\r\n    suffix: {\r\n      control: 'boolean',\r\n      description: 'Show suffix',\r\n    },\r\n  },\r\n}"
+                "type": "Meta<PinInputComponent>",
+                "defaultValue": "{\r\n  title: 'Components/PinInput',\r\n  component: PinInputComponent,\r\n  tags: ['autodocs'],\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, FormsModule, PinInputComponent], // ✅ Fix import references\r\n    }),\r\n  ],\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<RatingComponent>",
+                "defaultValue": "{\r\n  title: 'Components/Rating',\r\n  component: RatingComponent,\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "Outline",
@@ -591,36 +966,6 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    variant: 'text',\r\n    disabled: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-button [variant]=\"variant\" [disabled]=\"disabled\">Text Button</lib-button>`,\r\n  }),\r\n}"
-            },
-            {
-                "name": "WithCounter",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    counter: 50,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-            },
-            {
-                "name": "WithError",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    error: 'This field is required',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-            },
-            {
-                "name": "WithHint",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    hint: 'Hint: Enter your name',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
             },
             {
                 "name": "WithLabel",
@@ -671,8 +1016,19 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<InputComponent>",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                "rawtype": "StoryObj<PinInputComponent>",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<RatingComponent>",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -847,76 +1203,48 @@
                     "defaultValue": "{\r\n  stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],\r\n  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],\r\n  framework: {\r\n    name: '@storybook/angular',\r\n    options: {},\r\n  },\r\n  docs: {\r\n    autodocs: true,\r\n    defaultName: 'Docs',\r\n  },\r\n}"
                 }
             ],
-            "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts": [
+            "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts": [
                 {
-                    "name": "CustomStyled",
+                    "name": "DefaultPinInput",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    class: 'text-lg px-4 py-2 border-gray-300 focus:ring-2 focus:ring-blue-500',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-                },
-                {
-                    "name": "Default",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-                },
-                {
-                    "name": "Disabled",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    length: 6,\r\n    type: 'number',\r\n    autoSubmit: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-otp-input [length]=\"6\" [type]=\"'number'\" (completed)=\"verifyOtp($event)\"></lib-otp-input>`,\r\n  }),\r\n}"
                 },
                 {
                     "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Meta<InputComponent>",
-                    "defaultValue": "{\r\n  title: 'Components/Input',\r\n  component: InputComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    type: {\r\n      control: 'select',\r\n      options: ['text', 'number', 'password', 'email'],\r\n      description: 'Input type',\r\n    },\r\n    placeholder: {\r\n      control: 'text',\r\n      description: 'Placeholder text',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disables the input',\r\n    },\r\n    readonly: {\r\n      control: 'boolean',\r\n      description: 'Sets the input to readonly',\r\n    },\r\n    class: {\r\n      control: 'text',\r\n      description: 'Additional Tailwind CSS classes for customization',\r\n    },\r\n    hint: {\r\n      control: 'text',\r\n      description: 'Hint text',\r\n    },\r\n    error: {\r\n      control: 'text',\r\n      description: 'Error message',\r\n    },\r\n    counter: {\r\n      control: 'number',\r\n      description: 'Character counter limit',\r\n    },\r\n    prefix: {\r\n      control: 'boolean',\r\n      description: 'Show prefix',\r\n    },\r\n    suffix: {\r\n      control: 'boolean',\r\n      description: 'Show suffix',\r\n    },\r\n  },\r\n}"
-                },
+                    "type": "Meta<PinInputComponent>",
+                    "defaultValue": "{\r\n  title: 'Components/PinInput',\r\n  component: PinInputComponent,\r\n  tags: ['autodocs'],\r\n  decorators: [\r\n    moduleMetadata({\r\n      imports: [CommonModule, FormsModule, PinInputComponent], // ✅ Fix import references\r\n    }),\r\n  ],\r\n}"
+                }
+            ],
+            "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts": [
                 {
-                    "name": "WithCounter",
+                    "name": "DefaultRating",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    counter: 50,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+                    "defaultValue": "{\r\n  args: {\r\n    value: 3.5,\r\n    max: 5,\r\n    allowHalf: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-rating [value]=\"value\" [max]=\"max\" [allowHalf]=\"allowHalf\"></lib-rating>`,\r\n  }),\r\n}"
                 },
                 {
-                    "name": "WithError",
+                    "name": "meta",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    error: 'This field is required',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
-                },
-                {
-                    "name": "WithHint",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Story",
-                    "defaultValue": "{\r\n  args: {\r\n    placeholder: 'Enter text',\r\n    hint: 'Hint: Enter your name',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+                    "type": "Meta<RatingComponent>",
+                    "defaultValue": "{\r\n  title: 'Components/Rating',\r\n  component: RatingComponent,\r\n  tags: ['autodocs'],\r\n}"
                 }
             ]
         },
@@ -949,13 +1277,26 @@
                     "kind": 183
                 }
             ],
-            "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts": [
+            "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<InputComponent>",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                    "rawtype": "StoryObj<PinInputComponent>",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<RatingComponent>",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1168,37 +1509,17 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
-                "name": "CustomStyled",
+                "name": "DefaultPinInput",
                 "coveragePercent": 0,
                 "coverageCount": "0/1",
                 "status": "low"
             },
             {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Default",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "Disabled",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",
@@ -1208,37 +1529,7 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithCounter",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithError",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
-                "type": "variable",
-                "linktype": "miscellaneous",
-                "linksubtype": "variable",
-                "name": "WithHint",
-                "coveragePercent": 0,
-                "coverageCount": "0/1",
-                "status": "low"
-            },
-            {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.stories.ts",
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts",
                 "type": "type alias",
                 "linktype": "miscellaneous",
                 "linksubtype": "typealias",
@@ -1248,10 +1539,49 @@
                 "status": "low"
             },
             {
-                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/input/input.component.ts",
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "InputComponent",
+                "name": "PinInputComponent",
+                "coveragePercent": 22,
+                "coverageCount": "4/18",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DefaultRating",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "RatingComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/12",
                 "status": "low"
