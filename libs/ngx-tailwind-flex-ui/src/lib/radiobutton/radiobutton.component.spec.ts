@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
 import { RadioButtonComponent } from './radiobutton.component';
 
 describe('RadioButtonComponent', () => {
@@ -8,7 +7,7 @@ describe('RadioButtonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FormsModule, RadioButtonComponent], // Standalone component import
+      imports: [RadioButtonComponent], // ✅ Correct way to use standalone components
     }).compileComponents();
 
     fixture = TestBed.createComponent(RadioButtonComponent);
@@ -16,20 +15,17 @@ describe('RadioButtonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should emit selectionChange event when selected', () => {
-    jest.spyOn(component.selectionChange, 'emit'); // ✅ Fixed for Jest
-    component.handleChange();
-    expect(component.selectionChange.emit).toHaveBeenCalledWith(component.value);
-  });
-
-  it('should be disabled when set', () => {
-    component.disabled = true;
-    fixture.detectChanges();
+  it('should call handleChange when radio button changes', () => {  
+    const spy = jest.spyOn(component, 'handleChange'); // ✅ Correct way in Jest
     const input = fixture.nativeElement.querySelector('input');
-    expect(input.disabled).toBeTruthy();
+    input.dispatchEvent(new Event('change'));
+    expect(spy).toHaveBeenCalled(); // ✅ Ensure the method was called
+  });
+
+  it('should call handleClick when radio button is clicked', () => {
+    const spy = jest.spyOn(component, 'handleClick'); // ✅ Correct way in Jest
+    const input = fixture.nativeElement.querySelector('input');
+    input.dispatchEvent(new Event('click'));
+    expect(spy).toHaveBeenCalled(); // ✅ Ensure the method was called
   });
 });

@@ -1,9 +1,11 @@
-import { Component, EventEmitter, Input, Output, forwardRef, HostBinding } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-radio-button',
   standalone: true,
+  imports: [CommonModule],
   templateUrl: './radiobutton.component.html',
   providers: [
     {
@@ -42,6 +44,7 @@ export class RadioButtonComponent implements ControlValueAccessor {
   }
 
   handleChange(): void {
+    console.log('Radio button changed:');
     if (!this.disabled) {
       this.onChangeFn(this.value);
       this.selectionChange.emit(this.value);
@@ -49,15 +52,10 @@ export class RadioButtonComponent implements ControlValueAccessor {
   }
 
   handleClick(): void {
+    console.log('Radio button clicked:');
     if (!this.disabled) {
       this.radioClick.emit();
     }
-  }
 
-  @HostBinding('class')
-  get hostClasses() {
-    return `flex items-center space-x-2 cursor-pointer transition ${
-      this.disabled ? 'opacity-50 cursor-not-allowed' : ''
-    }`;
   }
 }

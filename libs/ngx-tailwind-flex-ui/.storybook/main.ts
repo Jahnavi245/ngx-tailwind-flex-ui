@@ -1,6 +1,5 @@
 import type { StorybookConfig } from '@storybook/angular';
-import { Configuration } from 'webpack';
-import * as path from 'path';
+
 
 const config: StorybookConfig = {
   stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],

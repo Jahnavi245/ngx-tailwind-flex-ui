@@ -5,8 +5,8 @@
       [value]="value"
       [checked]="checked"
       [disabled]="disabled"
-      (change)="handleChange($event)"
-      (click)="handleClick($event)"
+      (change)="handleChange()"
+      (click)="handleClick()"
       class="hidden peer"
     />
     <div
@@ -14,7 +14,11 @@
              peer-checked:border-blue-900 peer-checked:border-4 
              hover:border-blue-900 focus:ring-2 focus:ring-blue-300 transition-all"
     >
-      <div class="w-3.5 h-3.5 bg-blue-900 rounded-full peer-checked:block hidden"></div>
+      <div
+        class="w-3.5 h-3.5 bg-blue-900 rounded-full"
+        [ngClass]="{'hidden': !checked}"
+      ></div>
     </div>
     <ng-content></ng-content>
-</label>
+  </label>
+  
