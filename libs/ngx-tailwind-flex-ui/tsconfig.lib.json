@@ -1,19 +1,16 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "target": "ES2020",
+    "module": "ES2020",
     "declaration": true,
     "declarationMap": true,
+    "sourceMap": true,
     "inlineSources": true,
-    "types": []
+    "types": [],
+    "lib": ["ES2020", "dom"]
   },
-  "exclude": [
-    "src/**/*.spec.ts",
-    "src/test-setup.ts",
-    "jest.config.ts",
-    "src/**/*.test.ts",
-    "**/*.stories.ts",
-    "**/*.stories.js"
-  ],
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
   "include": ["src/**/*.ts"]
 }

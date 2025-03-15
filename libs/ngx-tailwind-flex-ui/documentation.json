@@ -94,7 +94,7 @@
         },
         {
             "name": "CheckboxComponent",
-            "id": "component-CheckboxComponent-0995fe73414667beee95621ef71c6e9a63a1311009a0494a794e8e52978899095b445ba96f67d0cbdec73082a643feba551a1c00b9eb4271c6383ad9eb1782f8",
+            "id": "component-CheckboxComponent-9c607cc4f80713fda1223a1e3f9e3d7fa6075e390496cc9d5895434477726c819252f0e444c56355286da2b755055bc8dfab1306123a858984725eb47912fc6b",
             "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -256,16 +256,300 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n@Component({\n  selector: 'lib-checkbox',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './checkbox.component.html',\n  styles: [], // No inline styles; Tailwind handles it\n})\nexport class CheckboxComponent {\n  @Input() checked = false;\n  @Input() disabled = false;\n  @Input() indeterminate = false;\n  @Input() label = '';\n  @Input() labelPosition: 'before' | 'after' = 'after';\n  @Input() class = ''; // Allow users to pass custom Tailwind classes\n\n  @Output() checkedChange = new EventEmitter<boolean>();\n  @Output() checkboxClick = new EventEmitter<Event>();\n\n  onChange(event: Event) {\n    this.checkedChange.emit((event.target as HTMLInputElement).checked);\n  }\n\n  onClick(event: Event) {\n    this.checkboxClick.emit(event);\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n@Component({\r\n  selector: 'lib-checkbox',\r\n  standalone: true,\r\n  imports: [CommonModule],\r\n  templateUrl: './checkbox.component.html',\r\n  styles: [], // No inline styles; Tailwind handles it\r\n})\r\nexport class CheckboxComponent {\r\n  @Input() checked = false;\r\n  @Input() disabled = false;\r\n  @Input() indeterminate = false;\r\n  @Input() label = '';\r\n  @Input() labelPosition: 'before' | 'after' = 'after';\r\n  @Input() class = ''; // Allow users to pass custom Tailwind classes\r\n\r\n  @Output() checkedChange = new EventEmitter<boolean>();\r\n  @Output() checkboxClick = new EventEmitter<Event>();\r\n\r\n  onChange(event: Event) {\r\n    this.checkedChange.emit((event.target as HTMLInputElement).checked);\r\n  }\r\n\r\n  onClick(event: Event) {\r\n    this.checkboxClick.emit(event);\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
             "extends": [],
-            "templateData": "<label class=\"flex items-center\">\n    <input\n      type=\"checkbox\"\n      [checked]=\"checked\"\n      [disabled]=\"disabled\"\n      [indeterminate]=\"indeterminate\"\n      (change)=\"onChange($event)\"\n      class=\"form-checkbox\"\n    />\n    <span *ngIf=\"label\" class=\"ml-2\" [class.order-last]=\"labelPosition === 'after'\">\n      {{ label }}\n    </span>\n  </label>\n  "
+            "templateData": "<label class=\"flex items-center\">\r\n    <input\r\n      type=\"checkbox\"\r\n      [checked]=\"checked\"\r\n      [disabled]=\"disabled\"\r\n      [indeterminate]=\"indeterminate\"\r\n      (change)=\"onChange($event)\"\r\n      class=\"form-checkbox\"\r\n    />\r\n    <span *ngIf=\"label\" class=\"ml-2\" [class.order-last]=\"labelPosition === 'after'\">\r\n      {{ label }}\r\n    </span>\r\n  </label>\r\n  "
+        },
+        {
+            "name": "DatepickerComponent",
+            "id": "component-DatepickerComponent-9e80df0c0dbebb44933551c6aaa9ab06626e3230e3b5e83c1aef9472e5845f6f4d5c1d964f39139c57fd0081a7f31727d3efbd0dcbc74158f42b0c3003831540",
+            "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [
+                {
+                    "name": "{\n    provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DatepickerComponent), multi: true,\n}",
+                    "type": "component"
+                }
+            ],
+            "selector": "lib-datepicker",
+            "styleUrls": [],
+            "styles": [],
+            "templateUrl": [
+                "./datepicker.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "disabled",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "format",
+                    "defaultValue": "'yyyy-MM-dd'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 21,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "maxDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 19,
+                    "type": "Date",
+                    "decorators": []
+                },
+                {
+                    "name": "minDate",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 18,
+                    "type": "Date",
+                    "decorators": []
+                },
+                {
+                    "name": "placeholder",
+                    "defaultValue": "'Select date'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 22,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "range",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 17,
+                    "type": "boolean",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isOpen",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "onChange",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "onTouched",
+                    "defaultValue": "() => {...}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "function",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "value",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Date | literal type | null",
+                    "indexKey": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 24
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "registerOnChange",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "Date | literal type | null",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ]
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 40,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [
+                                {
+                                    "name": "value",
+                                    "type": "Date | literal type | null",
+                                    "deprecated": false,
+                                    "deprecationMessage": ""
+                                }
+                            ],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "registerOnTouched",
+                    "args": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": []
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 44,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "fn",
+                            "type": "function",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "function": [],
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "selectDate",
+                    "args": [
+                        {
+                            "name": "date",
+                            "type": "Date",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 54,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "date",
+                            "type": "Date",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "toggleCalendar",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "writeValue",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "Date | literal type | null",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 36,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "Date | literal type | null",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, forwardRef } from '@angular/core';\nimport { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';\n\n@Component({\n  selector: 'lib-datepicker', // ✅ Fixed prefix to match ESLint rules\n  standalone: true,\n  templateUrl: './datepicker.component.html',\n  providers: [\n    {\n      provide: NG_VALUE_ACCESSOR,\n      useExisting: forwardRef(() => DatepickerComponent),\n      multi: true,\n    },\n  ],\n})\nexport class DatepickerComponent implements ControlValueAccessor {\n  @Input() range = false;\n  @Input() minDate?: Date;\n  @Input() maxDate?: Date;\n  @Input() disabled = false;\n  @Input() format = 'yyyy-MM-dd';\n  @Input() placeholder = 'Select date';\n\n  value: Date | { start: Date; end: Date } | null = null;\n  isOpen = false;\n\n  // ✅ Fixed: Added meaningful function bodies instead of empty functions\n  onChange: (value: Date | { start: Date; end: Date } | null) => void = () => {\n    /** Placeholder function to prevent ESLint error */\n  };\n\n  onTouched: () => void = () => {\n    /** Placeholder function to prevent ESLint error */\n  };\n\n  writeValue(value: Date | { start: Date; end: Date } | null): void {\n    this.value = value;\n  }\n\n  registerOnChange(fn: (value: Date | { start: Date; end: Date } | null) => void): void {\n    this.onChange = fn;\n  }\n\n  registerOnTouched(fn: () => void): void {\n    this.onTouched = fn;\n  }\n\n  toggleCalendar(): void {\n    if (!this.disabled) {\n      this.isOpen = !this.isOpen;\n    }\n  }\n\n  selectDate(date: Date): void {\n    if (this.range) {\n      if (!this.value) {\n        this.value = { start: date, end: date };\n      } else if ((this.value as { start: Date; end: Date }).start && !(this.value as { start: Date; end: Date }).end) {\n        (this.value as { start: Date; end: Date }).end = date;\n      } else {\n        this.value = { start: date, end: date };\n      }\n    } else {\n      this.value = date;\n    }\n    this.onChange(this.value);\n    this.isOpen = false;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "ControlValueAccessor"
+            ],
+            "templateData": "<div class=\"relative\">\n    <input\n      type=\"text\"\n      class=\"border rounded-md p-2 w-full focus:ring-2 focus:ring-blue-500\"\n      [placeholder]=\"placeholder\"\n      [value]=\"range ? (value ? (value.start | date: format) + ' - ' + (value.end ? (value.end | date: format) : '') : '') : (value ? (value | date: format) : '')\"\n      (click)=\"toggleCalendar()\"\n      readonly\n    />\n  \n    <div *ngIf=\"isOpen\" class=\"absolute bg-white shadow-md rounded-md p-4 z-10\">\n      <div class=\"grid grid-cols-7 gap-1\">\n        <span *ngFor=\"let day of ['S', 'M', 'T', 'W', 'T', 'F', 'S']\" class=\"text-center font-bold\">{{ day }}</span>\n        <button\n          *ngFor=\"let date of getDates()\"\n          class=\"p-2 rounded-md text-sm hover:bg-gray-200\"\n          [class.bg-blue-500]=\"isSelected(date)\"\n          [class.text-white]=\"isSelected(date)\"\n          [disabled]=\"isDisabled(date)\"\n          (click)=\"selectDate(date)\"\n        >\n          {{ date.getDate() }}\n        </button>\n      </div>\n    </div>\n  </div>\n  "
         },
         {
             "name": "PinInputComponent",
-            "id": "component-PinInputComponent-1b88834d97f2bf16e0cca749f4ef397285a0656abf68d07f150a022a7474f0d0e5020e7065bae3ad75428bc5a85234885c502e436cd5ff6647bd62d2eb0d3547",
+            "id": "component-PinInputComponent-7e35d9d07aa8e688854322993f5b9c5d8da964f0e90eeab4affb6cc0a265e8bfc21377a1669a3f84e9334ca060533b9540eba80b0149656d75cf716d64bfe575",
             "file": "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -561,7 +845,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import {\n  Component,\n  Input,\n  Output,\n  EventEmitter,\n  ViewChildren,\n  QueryList,\n  ElementRef,\n  AfterViewInit,\n  \n} from '@angular/core';\nimport { CommonModule } from '@angular/common';\nimport { FormsModule } from '@angular/forms';\n\n@Component({\n  selector: 'lib-otp-input',\n  standalone: true,\n  imports: [CommonModule, FormsModule], // Ensure FormsModule is imported\n  templateUrl: './pin-input.component.html',\n  styles: [],\n})\nexport class PinInputComponent implements AfterViewInit {\n  @Input() length = 6; // Default 6-digit OTP\n  @Input() type = 'number'; // Accepts only numbers by default\n  @Input() mask = false; // Mask input like passwords\n  @Input() autoSubmit = false; // Auto-submit when complete\n  @Input() disabled = false; // Disable input\n  @Input() customClass = ''; // Custom styling\n  @Input() pin = ''; // Ensure property exists\n  @Input() preventPaste = false;\n  @Output() completed = new EventEmitter<string>(); // Emits OTP when complete\n\n  @ViewChildren('otpInput') inputBoxes!: QueryList<ElementRef>;\n  otpValues: string[]  = [];\n\n  constructor() {\n    this.otpValues = new Array(this.length).fill('');\n  }\n\n  ngAfterViewInit() {\n    setTimeout(() => this.inputBoxes.get(0)?.nativeElement.focus(), 100);\n  }\n\n  /** Handles user input in OTP fields */\n  onInput(event: Event, index: number) {\n    const input = event.target as HTMLInputElement;\n    const value = input.value;\n\n    // Allow only numbers if type is 'number'\n    if (this.type === 'number' && !/^\\d$/.test(value)) {\n      input.value = '';\n      return;\n    }\n\n    this.otpValues[index] = value;\n\n    // Move to the next input box if a digit is entered\n    if (value && index < this.length - 1) {\n      this.inputBoxes.get(index + 1)?.nativeElement.focus();\n    }\n\n    // Emit OTP if all fields are filled\n    if (this.otpValues.every((v) => v !== '')) {\n      this.emitOTP();\n    }\n  }\n\n  /** Handles Backspace key for moving to the previous field */\n  onKeyDown(event: KeyboardEvent, index: number) {\n    if (event.key === 'Backspace' && !this.otpValues[index] && index > 0) {\n      this.inputBoxes.get(index - 1)?.nativeElement.focus();\n    }\n  }\n\n  /** Handles pasting OTP values */\n  onPaste(event: ClipboardEvent) {\n    if (this.preventPaste) {\n      event.preventDefault();\n      return;\n    }\n\n    event.preventDefault();\n    const pasteData = event.clipboardData?.getData('text') ?? '';\n\n    // Validate if the pasted data length matches the OTP length\n    if (pasteData.length === this.length && /^[a-zA-Z0-9]+$/.test(pasteData)) {\n      this.otpValues = pasteData.split('');\n      this.emitOTP();\n    }\n  }\n\n  /** Emits the completed OTP */\n  public emitOTP() {\n    const otp = this.otpValues.join('');\n    if (this.autoSubmit) {\n      this.completed.emit(otp);\n    }\n  }\n  \n}",
+            "sourceCode": "import {\r\n  Component,\r\n  Input,\r\n  Output,\r\n  EventEmitter,\r\n  ViewChildren,\r\n  QueryList,\r\n  ElementRef,\r\n  AfterViewInit,\r\n  \r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\nimport { FormsModule } from '@angular/forms';\r\n\r\n@Component({\r\n  selector: 'lib-otp-input',\r\n  standalone: true,\r\n  imports: [CommonModule, FormsModule], // Ensure FormsModule is imported\r\n  templateUrl: './pin-input.component.html',\r\n  styles: [],\r\n})\r\nexport class PinInputComponent implements AfterViewInit {\r\n  @Input() length = 6; // Default 6-digit OTP\r\n  @Input() type = 'number'; // Accepts only numbers by default\r\n  @Input() mask = false; // Mask input like passwords\r\n  @Input() autoSubmit = false; // Auto-submit when complete\r\n  @Input() disabled = false; // Disable input\r\n  @Input() customClass = ''; // Custom styling\r\n  @Input() pin = ''; // Ensure property exists\r\n  @Input() preventPaste = false;\r\n  @Output() completed = new EventEmitter<string>(); // Emits OTP when complete\r\n\r\n  @ViewChildren('otpInput') inputBoxes!: QueryList<ElementRef>;\r\n  otpValues: string[]  = [];\r\n\r\n  constructor() {\r\n    this.otpValues = new Array(this.length).fill('');\r\n  }\r\n\r\n  ngAfterViewInit() {\r\n    setTimeout(() => this.inputBoxes.get(0)?.nativeElement.focus(), 100);\r\n  }\r\n\r\n  /** Handles user input in OTP fields */\r\n  onInput(event: Event, index: number) {\r\n    const input = event.target as HTMLInputElement;\r\n    const value = input.value;\r\n\r\n    // Allow only numbers if type is 'number'\r\n    if (this.type === 'number' && !/^\\d$/.test(value)) {\r\n      input.value = '';\r\n      return;\r\n    }\r\n\r\n    this.otpValues[index] = value;\r\n\r\n    // Move to the next input box if a digit is entered\r\n    if (value && index < this.length - 1) {\r\n      this.inputBoxes.get(index + 1)?.nativeElement.focus();\r\n    }\r\n\r\n    // Emit OTP if all fields are filled\r\n    if (this.otpValues.every((v) => v !== '')) {\r\n      this.emitOTP();\r\n    }\r\n  }\r\n\r\n  /** Handles Backspace key for moving to the previous field */\r\n  onKeyDown(event: KeyboardEvent, index: number) {\r\n    if (event.key === 'Backspace' && !this.otpValues[index] && index > 0) {\r\n      this.inputBoxes.get(index - 1)?.nativeElement.focus();\r\n    }\r\n  }\r\n\r\n  /** Handles pasting OTP values */\r\n  onPaste(event: ClipboardEvent) {\r\n    if (this.preventPaste) {\r\n      event.preventDefault();\r\n      return;\r\n    }\r\n\r\n    event.preventDefault();\r\n    const pasteData = event.clipboardData?.getData('text') ?? '';\r\n\r\n    // Validate if the pasted data length matches the OTP length\r\n    if (pasteData.length === this.length && /^[a-zA-Z0-9]+$/.test(pasteData)) {\r\n      this.otpValues = pasteData.split('');\r\n      this.emitOTP();\r\n    }\r\n  }\r\n\r\n  /** Emits the completed OTP */\r\n  public emitOTP() {\r\n    const otp = this.otpValues.join('');\r\n    if (this.autoSubmit) {\r\n      this.completed.emit(otp);\r\n    }\r\n  }\r\n  \r\n}",
             "assetsDirs": [],
             "styleUrlsData": "",
             "stylesData": "",
@@ -577,11 +861,11 @@
             "implements": [
                 "AfterViewInit"
             ],
-            "templateData": "<div class=\"otp-container\">\n  <input\n    *ngFor=\"let digit of otpValues; let i = index\"\n    #otpInput\n    type=\"{{ mask ? 'password' : 'text' }}\"\n    [(ngModel)]=\"otpValues[i]\"\n    (input)=\"onInput($event, i)\"\n    (keydown)=\"onKeyDown($event, i)\"\n    (paste)=\"onPaste($event)\"\n    maxlength=\"1\"\n    [disabled]=\"disabled\"\n    class=\"otp-box\"\n    [attr.aria-label]=\"'OTP Digit ' + (i + 1)\"\n  />\n</div>\n"
+            "templateData": "<div class=\"otp-container\">\r\n  <input\r\n    *ngFor=\"let digit of otpValues; let i = index\"\r\n    #otpInput\r\n    type=\"{{ mask ? 'password' : 'text' }}\"\r\n    [(ngModel)]=\"otpValues[i]\"\r\n    (input)=\"onInput($event, i)\"\r\n    (keydown)=\"onKeyDown($event, i)\"\r\n    (paste)=\"onPaste($event)\"\r\n    maxlength=\"1\"\r\n    [disabled]=\"disabled\"\r\n    class=\"otp-box\"\r\n    [attr.aria-label]=\"'OTP Digit ' + (i + 1)\"\r\n  />\r\n</div>\r\n"
         },
         {
             "name": "RatingComponent",
-            "id": "component-RatingComponent-e65c1de24290b2b3b28dd6b912c35af22ac7b86f0ef6522ba18806be2b1ebafe35f10e58c472907e1b9d22ebf438d4fa0af0e46c260d52f2ea5d16f200eada1f",
+            "id": "component-RatingComponent-9ec8cc587143bf3ef43816fb5ec14d7c9aaa00b7a51031589a5d8c28dc236a908a220f28a8a4727c9bfc7dab2985e3cfc1e3988693c687d67fceb70320817a6c",
             "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -771,7 +1055,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'lib-rating',\n  standalone: true,\n  templateUrl: './rating.component.html',\n  styleUrls: ['./rating.component.css'],\n  imports: [CommonModule],\n})\nexport class RatingComponent {\n  @Input() max = 5;\n  @Input() value = 0;\n  @Input() readonly = false;\n  @Input() allowHalf!: boolean;  // ✅ Fixed: No default value, avoids ESLint issue\n  @Input() icon = '⭐';\n  @Input() size = 'text-2xl';\n  @Input() activeColor = 'text-yellow-400';\n  @Input() inactiveColor = 'text-gray-300';\n  @Output() valueChange = new EventEmitter<number>();\n\n  setRating(rating: number, isHalf = false) {\n    if (!this.readonly) {\n      this.value = isHalf && this.allowHalf ? rating + 0.5 : rating;\n      this.valueChange.emit(this.value);\n    }\n  }\n\n  getStarClasses(starIndex: number) {\n    if (this.value >= starIndex) {\n      return `${this.activeColor} ${this.size}`;\n    } else if (this.allowHalf && this.value >= starIndex - 0.5) {\n      return `${this.activeColor} ${this.size} half-star`;\n    } else {\n      return `${this.inactiveColor} ${this.size}`;\n    }\n  }\n}\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n  selector: 'lib-rating',\r\n  standalone: true,\r\n  templateUrl: './rating.component.html',\r\n  styleUrls: ['./rating.component.css'],\r\n  imports: [CommonModule],\r\n})\r\nexport class RatingComponent {\r\n  @Input() max = 5;\r\n  @Input() value = 0;\r\n  @Input() readonly = false;\r\n  @Input() allowHalf!: boolean;  // ✅ Fixed: No default value, avoids ESLint issue\r\n  @Input() icon = '⭐';\r\n  @Input() size = 'text-2xl';\r\n  @Input() activeColor = 'text-yellow-400';\r\n  @Input() inactiveColor = 'text-gray-300';\r\n  @Output() valueChange = new EventEmitter<number>();\r\n\r\n  setRating(rating: number, isHalf = false) {\r\n    if (!this.readonly) {\r\n      this.value = isHalf && this.allowHalf ? rating + 0.5 : rating;\r\n      this.valueChange.emit(this.value);\r\n    }\r\n  }\r\n\r\n  getStarClasses(starIndex: number) {\r\n    if (this.value >= starIndex) {\r\n      return `${this.activeColor} ${this.size}`;\r\n    } else if (this.allowHalf && this.value >= starIndex - 0.5) {\r\n      return `${this.activeColor} ${this.size} half-star`;\r\n    } else {\r\n      return `${this.inactiveColor} ${this.size}`;\r\n    }\r\n  }\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -781,7 +1065,7 @@
             ],
             "stylesData": "",
             "extends": [],
-            "templateData": "<div class=\"flex space-x-1\" role=\"radiogroup\">\n    <ng-container *ngFor=\"let star of [].constructor(max); let i = index\">\n      <span\n        [class]=\"getStarClasses(i + 1)\"\n        (click)=\"setRating(i + 1)\"\n        (keydown.enter)=\"setRating(i + 1)\"\n        tabindex=\"0\"\n        role=\"radio\"\n        [attr.aria-label]=\"'Rate ' + (i + 1) + ' out of ' + max\"\n        [attr.aria-checked]=\"i + 1 === value\"\n      >\n        {{ icon }}\n      </span>\n    </ng-container>\n  </div>\n  "
+            "templateData": "<div class=\"flex space-x-1\" role=\"radiogroup\">\r\n    <ng-container *ngFor=\"let star of [].constructor(max); let i = index\">\r\n      <span\r\n        [class]=\"getStarClasses(i + 1)\"\r\n        (click)=\"setRating(i + 1)\"\r\n        (keydown.enter)=\"setRating(i + 1)\"\r\n        tabindex=\"0\"\r\n        role=\"radio\"\r\n        [attr.aria-label]=\"'Rate ' + (i + 1) + ' out of ' + max\"\r\n        [attr.aria-checked]=\"i + 1 === value\"\r\n      >\r\n        {{ icon }}\r\n      </span>\r\n    </ng-container>\r\n  </div>\r\n  "
         }
     ],
     "modules": [],
@@ -821,6 +1105,16 @@
                 "name": "CustomStyled",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n    class: 'text-lg',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+            },
+            {
+                "name": "CustomStyled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
                 "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
@@ -828,14 +1122,14 @@
                 "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    class: 'text-lg px-6 py-3 bg-green-500 hover:bg-green-600',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-button [variant]=\"variant\" [class]=\"class\">Custom Styled Button</lib-button>`,\r\n  }),\r\n}"
             },
             {
-                "name": "CustomStyled",
+                "name": "DateRange",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n    class: 'text-lg',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+                "defaultValue": "{\r\n  args: {\r\n    range: true,\r\n    placeholder: 'Select a date range',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker range [placeholder]=\"placeholder\"></app-datepicker>`,\r\n  }),\r\n}"
             },
             {
                 "name": "Default",
@@ -871,21 +1165,31 @@
                 "name": "Disabled",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Story",
-                "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-button [variant]=\"variant\" [disabled]=\"disabled\">Disabled Button</lib-button>`,\r\n  }),\r\n}"
-            },
-            {
-                "name": "Disabled",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+            },
+            {
+                "name": "Disabled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker [disabled]=\"disabled\"></app-datepicker>`,\r\n  }),\r\n}"
+            },
+            {
+                "name": "Disabled",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-button [variant]=\"variant\" [disabled]=\"disabled\">Disabled Button</lib-button>`,\r\n  }),\r\n}"
             },
             {
                 "name": "Indeterminate",
@@ -901,21 +1205,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
-                "deprecated": false,
-                "deprecationMessage": "",
-                "type": "Meta<ButtonComponent>",
-                "defaultValue": "{\r\n  title: 'Components/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    variant: {\r\n      control: 'select',\r\n      options: ['primary', 'accent', 'outline', 'text'],\r\n      description: 'Button style variant',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disables the button',\r\n    },\r\n    class: {\r\n      control: 'text',\r\n      description: 'Additional Tailwind CSS classes for customization',\r\n    },\r\n  },\r\n}"
-            },
-            {
-                "name": "meta",
-                "ctype": "miscellaneous",
-                "subtype": "variable",
                 "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Meta<CheckboxComponent>",
                 "defaultValue": "{\r\n  title: 'Components/Checkbox',\r\n  component: CheckboxComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    checked: {\r\n      control: 'boolean',\r\n      description: 'Checked state of the checkbox',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disables the checkbox',\r\n    },\r\n    indeterminate: {\r\n      control: 'boolean',\r\n      description: 'Indeterminate state of the checkbox',\r\n    },\r\n    label: {\r\n      control: 'text',\r\n      description: 'Label text',\r\n    },\r\n    labelPosition: {\r\n      control: 'select',\r\n      options: ['before', 'after'],\r\n      description: 'Position of the label relative to the checkbox',\r\n    },\r\n    class: {\r\n      control: 'text',\r\n      description: 'Additional Tailwind CSS classes for customization',\r\n    },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<RatingComponent>",
+                "defaultValue": "{\r\n  title: 'Components/Rating',\r\n  component: RatingComponent,\r\n  tags: ['autodocs'],\r\n}"
             },
             {
                 "name": "meta",
@@ -931,11 +1235,21 @@
                 "name": "meta",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
-                "type": "Meta<RatingComponent>",
-                "defaultValue": "{\r\n  title: 'Components/Rating',\r\n  component: RatingComponent,\r\n  tags: ['autodocs'],\r\n}"
+                "type": "Meta<DatepickerComponent>",
+                "defaultValue": "{\r\n  title: 'Components/Datepicker',\r\n  component: DatepickerComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    range: {\r\n      control: 'boolean',\r\n      description: 'Enable range selection',\r\n    },\r\n    minDate: {\r\n      control: 'date',\r\n      description: 'Minimum selectable date',\r\n    },\r\n    maxDate: {\r\n      control: 'date',\r\n      description: 'Maximum selectable date',\r\n    },\r\n    format: {\r\n      control: 'text',\r\n      description: 'Date format',\r\n    },\r\n    placeholder: {\r\n      control: 'text',\r\n      description: 'Input placeholder',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disable the datepicker',\r\n    },\r\n  },\r\n}"
+            },
+            {
+                "name": "meta",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Meta<ButtonComponent>",
+                "defaultValue": "{\r\n  title: 'Components/Button',\r\n  component: ButtonComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    variant: {\r\n      control: 'select',\r\n      options: ['primary', 'accent', 'outline', 'text'],\r\n      description: 'Button style variant',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disables the button',\r\n    },\r\n    class: {\r\n      control: 'text',\r\n      description: 'Additional Tailwind CSS classes for customization',\r\n    },\r\n  },\r\n}"
             },
             {
                 "name": "Outline",
@@ -956,6 +1270,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    variant: 'primary',\r\n    disabled: false,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<lib-button [variant]=\"variant\" [disabled]=\"disabled\">Primary Button</lib-button>`,\r\n  }),\r\n}"
+            },
+            {
+                "name": "SingleDate",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    range: false,\r\n    placeholder: 'Select a date',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker [placeholder]=\"placeholder\"></app-datepicker>`,\r\n  }),\r\n}"
             },
             {
                 "name": "Text",
@@ -986,6 +1310,16 @@
                 "deprecationMessage": "",
                 "type": "Story",
                 "defaultValue": "{\r\n  args: {\r\n    checked: false,\r\n    label: 'Checkbox Label',\r\n    labelPosition: 'before',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n  }),\r\n}"
+            },
+            {
+                "name": "WithMinMax",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Story",
+                "defaultValue": "{\r\n  args: {\r\n    minDate: new Date(2025, 3, 10),\r\n    maxDate: new Date(2025, 3, 20),\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker [minDate]=\"minDate\" [maxDate]=\"maxDate\"></app-datepicker>`,\r\n  }),\r\n}"
             }
         ],
         "functions": [],
@@ -994,8 +1328,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<ButtonComponent>",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
+                "rawtype": "StoryObj<CheckboxComponent>",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1005,8 +1339,8 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<CheckboxComponent>",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
+                "rawtype": "StoryObj<RatingComponent>",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1027,8 +1361,19 @@
                 "name": "Story",
                 "ctype": "miscellaneous",
                 "subtype": "typealias",
-                "rawtype": "StoryObj<RatingComponent>",
-                "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                "rawtype": "StoryObj<DatepickerComponent>",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "description": "",
+                "kind": 183
+            },
+            {
+                "name": "Story",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "StoryObj<ButtonComponent>",
+                "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "description": "",
@@ -1203,6 +1548,58 @@
                     "defaultValue": "{\r\n  stories: ['../**/*.@(mdx|stories.@(js|jsx|ts|tsx))'],\r\n  addons: ['@storybook/addon-essentials', '@storybook/addon-interactions'],\r\n  framework: {\r\n    name: '@storybook/angular',\r\n    options: {},\r\n  },\r\n  docs: {\r\n    autodocs: true,\r\n    defaultName: 'Docs',\r\n  },\r\n}"
                 }
             ],
+            "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts": [
+                {
+                    "name": "DateRange",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    range: true,\r\n    placeholder: 'Select a date range',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker range [placeholder]=\"placeholder\"></app-datepicker>`,\r\n  }),\r\n}"
+                },
+                {
+                    "name": "Disabled",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    disabled: true,\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker [disabled]=\"disabled\"></app-datepicker>`,\r\n  }),\r\n}"
+                },
+                {
+                    "name": "meta",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Meta<DatepickerComponent>",
+                    "defaultValue": "{\r\n  title: 'Components/Datepicker',\r\n  component: DatepickerComponent,\r\n  tags: ['autodocs'],\r\n  argTypes: {\r\n    range: {\r\n      control: 'boolean',\r\n      description: 'Enable range selection',\r\n    },\r\n    minDate: {\r\n      control: 'date',\r\n      description: 'Minimum selectable date',\r\n    },\r\n    maxDate: {\r\n      control: 'date',\r\n      description: 'Maximum selectable date',\r\n    },\r\n    format: {\r\n      control: 'text',\r\n      description: 'Date format',\r\n    },\r\n    placeholder: {\r\n      control: 'text',\r\n      description: 'Input placeholder',\r\n    },\r\n    disabled: {\r\n      control: 'boolean',\r\n      description: 'Disable the datepicker',\r\n    },\r\n  },\r\n}"
+                },
+                {
+                    "name": "SingleDate",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    range: false,\r\n    placeholder: 'Select a date',\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker [placeholder]=\"placeholder\"></app-datepicker>`,\r\n  }),\r\n}"
+                },
+                {
+                    "name": "WithMinMax",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Story",
+                    "defaultValue": "{\r\n  args: {\r\n    minDate: new Date(2025, 3, 10),\r\n    maxDate: new Date(2025, 3, 20),\r\n  },\r\n  render: (args) => ({\r\n    props: args,\r\n    template: `<app-datepicker [minDate]=\"minDate\" [maxDate]=\"maxDate\"></app-datepicker>`,\r\n  }),\r\n}"
+                }
+            ],
             "libs/ngx-tailwind-flex-ui/src/lib/pin-input/pin-input.component.stories.ts": [
                 {
                     "name": "DefaultPinInput",
@@ -1251,19 +1648,6 @@
         "groupedFunctions": {},
         "groupedEnumerations": {},
         "groupedTypeAliases": {
-            "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts": [
-                {
-                    "name": "Story",
-                    "ctype": "miscellaneous",
-                    "subtype": "typealias",
-                    "rawtype": "StoryObj<ButtonComponent>",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "description": "",
-                    "kind": 183
-                }
-            ],
             "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts": [
                 {
                     "name": "Story",
@@ -1271,6 +1655,19 @@
                     "subtype": "typealias",
                     "rawtype": "StoryObj<CheckboxComponent>",
                     "file": "libs/ngx-tailwind-flex-ui/src/lib/checkbox/checkbox.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<RatingComponent>",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1290,13 +1687,26 @@
                     "kind": 183
                 }
             ],
-            "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts": [
+            "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts": [
                 {
                     "name": "Story",
                     "ctype": "miscellaneous",
                     "subtype": "typealias",
-                    "rawtype": "StoryObj<RatingComponent>",
-                    "file": "libs/ngx-tailwind-flex-ui/src/lib/rating/rating.component.stories.ts",
+                    "rawtype": "StoryObj<DatepickerComponent>",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "description": "",
+                    "kind": 183
+                }
+            ],
+            "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts": [
+                {
+                    "name": "Story",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "StoryObj<ButtonComponent>",
+                    "file": "libs/ngx-tailwind-flex-ui/src/lib/button/button.component.stories.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "description": "",
@@ -1506,6 +1916,75 @@
                 "name": "CheckboxComponent",
                 "coveragePercent": 0,
                 "coverageCount": "0/11",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "DateRange",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Disabled",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "meta",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "SingleDate",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "WithMinMax",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.stories.ts",
+                "type": "type alias",
+                "linktype": "miscellaneous",
+                "linksubtype": "typealias",
+                "name": "Story",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "libs/ngx-tailwind-flex-ui/src/lib/datepicker/datepicker.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "DatepickerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/16",
                 "status": "low"
             },
             {
